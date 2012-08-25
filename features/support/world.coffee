@@ -7,6 +7,9 @@ module.exports.World = ( callback ) ->
 
   @chatUrl = 'http://localhost:9010'
 
-  @visit = @browser.visit
+  @visit = ( url, callback ) ->
+    @browser.visit url, (err, browser) ->
+      if ( err) then callback.fail( new Error 'ZombieJS: ' + err.message )
+      callback()
 
   callback()
