@@ -9,7 +9,7 @@ module.exports.World = ( callback ) ->
 
   @visit = ( url, callback ) ->
     @browser.visit url, (err, browser) ->
-      if ( err) then callback.fail( new Error 'ZombieJS: ' + err.message )
+      if ( err ) then callback.fail( new Error 'ZombieJS: ' + err.message )
       callback()
 
   callback()
