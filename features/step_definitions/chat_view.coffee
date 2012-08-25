@@ -7,7 +7,6 @@ module.exports = ->
     @visit @chatUrl, done
 
   @Then /I should see the chat/, ( done ) ->
-    $ = @browser.html()
     chatEl = $( '#chat' )
     expect( chatEl ).to.be.visible()
     done()

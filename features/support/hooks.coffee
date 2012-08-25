@@ -10,7 +10,6 @@ expect = chai.expect
 
 module.exports = ()->
 
-  global.$ = $
   global.expect = expect
 
   @World = World
