@@ -15,6 +15,7 @@
   "devDependencies": {
     "chai": "~1.2.0",
     "sinon-chai": "~2.1.2",
-    "grunt-coffee": "0.0.5"
+    "grunt-coffee": "0.0.5",
+    "zombie": "~1.4.1"
   }
 }
