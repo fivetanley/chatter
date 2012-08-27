@@ -3,5 +3,5 @@ Feature: Automatically Update the Chat View
 
   Scenario: When a message is received
     Given I am on the chatsite
-    When a Message is broadcasted from another user
+    When a Message is broadcasted from the server
     Then I should see the Message
