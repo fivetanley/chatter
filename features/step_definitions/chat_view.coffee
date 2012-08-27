@@ -8,5 +8,5 @@ module.exports = ->
 
   @Then /I should see the chat/, ( done ) ->
     chatEl = $( '#chat' )
-    expect( chatEl ).to.be.visible()
+    expect( chatEl ).to.be.visible
     done()
