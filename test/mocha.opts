@@ -2,3 +2,4 @@
 --ui bdd
 --reporter spec
 --recursive
+--compilers coffee:coffee-script
