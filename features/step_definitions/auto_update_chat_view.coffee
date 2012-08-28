@@ -4,6 +4,7 @@ module.exports = ->
 
   @chatView = {}
 
+  # When a Message is received
   @Given /I am on the chatsite/, ( done ) ->
     @visit @chatUrl, =>
       @chatView = new ChatView( { el: $('<ol></ol>') } )
@@ -17,3 +18,12 @@ module.exports = ->
     expect( @chatView.$el.filter( ':last-child' ) ).to.contain( 'bam' )
     done()
 
+  # When a Message is Sent
+
+  @When /I send a Message/, ( done ) ->
+    @chatView.sendMessage( 'foo' )
+    done()
+
+  @Then /I should see my Message/, ( done ) ->
+    expect( @chatView.$el.filter( ':last-child' ) ).to.contain( 'foo' ) 
+    done()
