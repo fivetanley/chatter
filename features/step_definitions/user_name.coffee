@@ -2,15 +2,16 @@ ChatView = require( '../../lib/viewmodels/chat_view' )
 module.exports = ->
 
   chatView = {}
+  notifyStub = ''
 
   @Before ( done ) ->
     chatView = new ChatView()
     chatView.senderName = 'Robot'
-    sinon.stub( chatView, 'notifyUnavailable' )
+    notifyStub = sinon.stub( ChatView.prototype, 'notifyUnavailable' )
     done()
 
   @After ( done ) ->
-    chatView.notifyUnavailable.restore()
+    notifyStub.restore()
     done()
 
   @When /I request to change my name/, ( done ) ->
@@ -36,6 +37,6 @@ module.exports = ->
     done()
 
   @Then /I should be notified the name is not available/, ( done ) ->
-    expect( chatView.notifyUnavailable )
+    expect( notifyStub ).to.have.been.called
     done()
 
