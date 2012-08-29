@@ -7,3 +7,10 @@ Feature: User Name
     When I request to change my name
     And the name is not taken by anyone else
     Then my name should be changed
+
+  Scenario: Changing the Name When the Name is not Available
+    Given I am on the chatsite
+    When I request to change my name
+    And the name is taken by somebody else
+    Then my name should not change
+
