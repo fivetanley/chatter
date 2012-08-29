@@ -3,8 +3,10 @@ module.exports = ->
 
   chatView = {}
 
-  chatView = new ChatView()
-  chatView.senderName = 'Robot'
+  @Before ( done ) ->
+    chatView = new ChatView()
+    chatView.senderName = 'Robot'
+    done()
 
   @When /I request to change my name/, ( done ) ->
     chatView.changeName( 'Robot2' )
@@ -16,3 +18,14 @@ module.exports = ->
 
   @Then /my name should be changed/, ( done ) ->
     expect( chatView.senderName ).to.equal( 'Robot2' )
+    done()
+
+  # When name not available
+  
+  @When /the name is taken by somebody else/, ( done ) ->
+    chatView.socket.$emit( 'deny:name:change', 'Robot2' )
+    done()
+
+  @Then /my name should not change/, ( done ) ->
+    expect( chatView.senderName ).to.equal 'Robot'
+    done()
