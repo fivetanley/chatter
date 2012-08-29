@@ -15,7 +15,6 @@
   "devDependencies": {
     "chai": "~1.2.0",
     "sinon-chai": "~2.1.2",
-    "grunt-coffee": "0.0.5",
     "zombie": "~1.4.1",
     "jquery": "~1.7.3",
     "chai-jquery": "~1.1.0",
