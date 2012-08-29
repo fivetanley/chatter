@@ -13,4 +13,5 @@ Feature: User Name
     When I request to change my name
     And the name is taken by somebody else
     Then my name should not change
+    And I should be notified the name is not available
 
