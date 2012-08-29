@@ -1,11 +1,12 @@
-ChatView = require( '../../lib/viewmodels/chat_view' )
+ChatView = require( '../../lib/public/js/viewmodels/chat_view' )
 
 describe 'ChatView', ->
 
   chatView = {}
 
   beforeEach ->
-    chatView = new ChatView( { el: $( '<div></div>' ) } )
+    chatView = new ChatView( { el: 
+      $( '<div><ol class="message_list"></ol></div>' ) } )
 
   describe 'updating messages', ->
 
@@ -16,14 +17,14 @@ describe 'ChatView', ->
 
     describe 'when received from server', ->
       it 'adds a message when its socket emits `message`', ->
-        expect( chatView.$el.children().length ).to.equal( 1 )
+        expect( chatView.$messageList.children().length ).to.equal( 1 )
 
       it 'renders the message body', ->
-        expect( chatView.$el.filter( ':last-child' ) )
+        expect( chatView.$messageList.filter( ':last-child' ) )
           .to.contain( 'Robots' )
 
       it 'renders the authors name', ->
-        expect( chatView.$el.filter( ':last-child' ) )
+        expect( chatView.$messageList.filter( ':last-child' ) )
           .to.contain( 'Stanley' )
 
     describe 'when sending to server', ->

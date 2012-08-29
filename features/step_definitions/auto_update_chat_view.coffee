@@ -1,4 +1,4 @@
-ChatView = require( '../../lib/public/viewmodels/chat_view' )
+ChatView = require( '../../lib/public/js/viewmodels/chat_view' )
 
 module.exports = ->
 
@@ -7,7 +7,8 @@ module.exports = ->
   # When a Message is received
   @Given /I am on the chatsite/, ( done ) ->
     @visit @chatUrl, =>
-      @chatView = new ChatView( { el: $('<ol></ol>') } )
+      @chatView = new ChatView( { el:
+        $('<div><ol class="message_list"></ol></div>') } )
       done()
 
   @When /a Message is broadcasted from the server/, ( done ) ->
@@ -15,7 +16,7 @@ module.exports = ->
     done()
 
   @Then /I should see the Message/, ( done ) ->
-    expect( @chatView.$el.filter( ':last-child' ) ).to.contain( 'bam' )
+    expect( @chatView.$messageList.filter( ':last-child' ) ).to.contain( 'bam' )
     done()
 
   # When a Message is Sent
@@ -25,5 +26,5 @@ module.exports = ->
     done()
 
   @Then /I should see my Message/, ( done ) ->
-    expect( @chatView.$el.filter( ':last-child' ) ).to.contain( 'foo' ) 
+    expect( @chatView.$messageList.filter( ':last-child' ) ).to.contain( 'foo' ) 
     done()

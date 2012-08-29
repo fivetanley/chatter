@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "ejs": "~0.8.2",
-    "socket.io-client": "~0.9.10"
+    "socket.io-client": "~0.9.10",
+    "socket.io": "~0.9.10"
   }
 }

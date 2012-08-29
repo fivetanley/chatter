@@ -1,4 +1,4 @@
-ChatView = require( '../../lib/public/viewmodels/chat_view' )
+ChatView = require( '../../lib/public/js/viewmodels/chat_view' )
 module.exports = ->
 
   chatView = {}
