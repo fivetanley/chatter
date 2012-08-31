@@ -8,6 +8,13 @@ describe 'ChatView', ->
     chatView = new ChatView( { el: 
       $( '<div><ol class="message_list"></ol></div>' ) } )
 
+  describe 'upon connection to the server', ->
+
+    it 'sends its name', ->
+      sinon.stub( chatView, 'changeName' )
+      chatView.socket.$emit( 'connection' )
+      expect( chatView.changeName ).to.have.been.called
+
   describe 'updating messages', ->
 
     beforeEach ->
