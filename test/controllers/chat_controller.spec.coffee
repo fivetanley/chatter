@@ -55,6 +55,6 @@ describe 'ChatController', ->
       , 'tastic'
       , sockets.foo )
 
-      expect( sockets.foo.emit ).to.have.been.calledWith 'accept:name:change'
-
-      
+      expect( sockets.foo.emit ).to.have.been.calledWith(
+        'accept:name:change', 'tastic'
+      )
