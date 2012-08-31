@@ -29,6 +29,7 @@ module.exports = ->
   # When name not available
 
   @When /the name is taken by somebody else/, ( done ) ->
+    chatView.senderName = 'Robot'
     chatView.socket.$emit( 'deny:name:change', 'Robot2' )
     done()
 
@@ -38,5 +39,9 @@ module.exports = ->
 
   @Then /I should be notified the name is not available/, ( done ) ->
     expect( notifyStub ).to.have.been.called
+    done()
+
+  @Then /I should be prompted to choose a name/, ( done ) ->
+    expect( chatView.promptUsername ).to.exist
     done()
 

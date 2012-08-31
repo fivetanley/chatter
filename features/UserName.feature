@@ -15,3 +15,8 @@ Feature: User Name
     Then my name should not change
     And I should be notified the name is not available
 
+  Scenario: Choosing Name On First Arrival to the Site
+    Given I am not on the chatsite
+    When I visit the chatsite
+    Then I should be prompted to choose a name
+
