@@ -10,8 +10,9 @@ describe 'ChatController', ->
     on: sinon.stub()
 
   for own key,socket of sockets
-    socket.emit = sinon.stub() unless key == 'on'
-    socket.set = sinon.stub() unless key == 'on'
+    socket.emit = sinon.stub() unless key is 'on'
+    socket.broadcast = sinon.stub() unless key is 'on'
+    socket.broadcast.emit = sinon.stub() unless key is 'on'
 
   chatController = new ChatController( sockets )
 
@@ -30,19 +31,30 @@ describe 'ChatController', ->
       expect( validator.sanitize ).to.have.been.calledWith( 'hello' )
 
     it 'sends the message everyone else', ->
-      expect( sockets.baz.emit, sockets.bar.emit )
-        .to.have.been.calledWith 'hello'
+      expect( sockets.foo.broadcast.emit ).to.have.been.called
 
-    it 'wont send the message to the sender', ->
-      expect( sockets.foo.emit ).not.to.have.been.called
+  describe 'when a client changes their name', ->
 
-  describe 'client changing their name', ->
-    ChatController::handleNameChange.call(
-      { sockets: sockets }
-    , 'hello'
-    , sockets.foo
-    )
+    beforeEach ->
+      ChatController::handleNameChange.call(
+        { sockets: sockets
+        , names: [ 'foo', 'bar', 'baz' ]
+        }
+      , 'foo'
+      , sockets.foo
+      )
 
+    it 'will deny the name change if it is taken', ->
+      expect( sockets.foo.emit ).to.have.been.calledWith 'deny:name:change'
 
+    it 'will accept the name change if it is not taken', ->
+      ChatController::handleNameChange.call(
+        { sockets: sockets
+        , names: [ 'foo', 'bar', 'baz' ]
+        }
+      , 'tastic'
+      , sockets.foo )
 
+      expect( sockets.foo.emit ).to.have.been.calledWith 'accept:name:change'
 
+      
