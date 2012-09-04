@@ -71,9 +71,14 @@ describe 'ChatView', ->
 
       it 'will send the message', ->
         chatView.$chatInput.val( 'fgsdgs' )
-        console.log( chatView.$chatInput.val() )
         chatView.$chatForm.submit()
         expect( chatView.socket.emit ).to.have.been.called
+
+      it 'will clear the input', ->
+        chatView.$chatInput.val( 'fgsdgs' )
+        chatView.$chatForm.submit()
+        expect( chatView.$chatInput.val() ).to.be.empty
+
 
   describe 'changing name', ->
 

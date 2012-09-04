@@ -2,20 +2,27 @@
 <html>
   <head>
     <title>Chatter</title>
+    <link rel='stylesheet' href='/css/reset.css'/>
+    <link rel="stylesheet" href="/css/styles.css"/>
   </head>
-<body>
-  <div id='name_picker'>
-    <form class='name_picker' action='name'>
-      <input type='text' name='name'/>
-      <input type='submit' value='Go!'/>
-    </form>
-  </div>
-  <div id="chat">
-    <ol class='message_list'></ol>
-    <form class='new_message' action='send'>
-      <input class='chatbox' type='text' name='message'/>
-      <input type='submit' value='Send' />
-    </form>
+  <body>
+  <div class="app_container">
+    <div id='name_picker'>
+      <form class='name_picker' action='name'>
+        <input type='text' name='name'/>
+        <input type='submit' value='Submit Name!'/>
+      </form>
+    </div>
+    <div id="chat" class='hidden'>
+      <ol class='message_list'></ol>
+      <form class='new_message' action='send'>
+        <label for='message'>
+          <span class='author'></span>
+        </label>
+        <input class='chatbox' type='text' name='message'/>
+        <input type='submit' value='Send' />
+      </form>
+    </div>
   </div>
   <script src="/js/main.js"></script>
 </body>

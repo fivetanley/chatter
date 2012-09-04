@@ -1,0 +1,47 @@
+html, body {
+  height: 95%;
+  width: 100%;
+  background-image: url('/css/asfalt.png');
+  background-repeat: repeat;
+}
+.app_container {
+  margin: 0 auto;
+  width: 95%;
+  height: 95%;
+}
+
+.app_container form {
+  text-align: center;
+}
+
+.app_container input[type=text] {
+  width: 45%;
+}
+
+#chat {
+  position: relative;
+  background-color:rgba( 0, 0, 0, 0.2 );
+  color: white;
+  width: 100%;
+  height: 90%;
+}
+
+.message_list {
+  padding: 10 5;
+  opacity: 1.0;
+  list-style-type: none;
+  height: 95%;
+  overflow: auto;
+}
+
+.message_list li {
+  padding-bottom: 2px;
+}
+
+.message_list li:nth-child( even ) {
+  background-color: ;
+}
+
+.hidden {
+  display: none;
+}
